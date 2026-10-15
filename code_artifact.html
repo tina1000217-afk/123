@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台中推薦景點 - Pastel Lavender Romance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        lavender: {
+                            50: '#fcf8ff',
+                            100: '#f5edff',
+                            200: '#ecdffd',
+                            300: '#ddc5f9',
+                            400: '#c59ff2',
+                            500: '#ab72e8',
+                            600: '#944cd4',
+                            700: '#7e37b5',
+                            800: '#682e94',
+                            900: '#562779',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .glass-nav {
+            background: rgba(252, 248, 255, 0.85);
+            backdrop-filter: blur(16px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(148, 76, 212, 0.75) 0%, rgba(104, 46, 148, 0.85) 100%), url('https://www.taiwanviptravel.com/articles/images/gaomei-wetland-titleImage.jpg') center/cover;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-lavender-50 via-white to-lavender-100/40 text-slate-700 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-lavender-200/60 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-lavender-500 to-lavender-300 flex items-center justify-center text-white shadow-md shadow-lavender-400/30">
+                    <i class="fa-solid fa-feather text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-lavender-800 to-lavender-600 bg-clip-text text-transparent">台中推薦景點</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#spots" class="text-slate-600 hover:text-lavender-700 font-medium transition">精選景點</a>
+                <a href="#planner" class="text-slate-600 hover:text-lavender-700 font-medium transition">夢幻行程</a>
+                <button onclick="openFavoritesModal()" class="relative flex items-center space-x-2 px-4 py-2 rounded-2xl bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800 transition font-medium shadow-sm">
+                    <i class="fa-solid fa-heart text-rose-400"></i>
+                    <span>收藏清單</span>
+                    <span id="fav-badge" class="absolute -top-1 -right-1 bg-rose-400 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+                </button>
+            </nav>
+
+            <div class="md:hidden flex items-center space-x-3">
+                <button onclick="openFavoritesModal()" class="relative p-2.5 rounded-2xl bg-lavender-100 text-lavender-800">
+                    <i class="fa-solid fa-heart text-rose-400 text-lg"></i>
+                    <span id="fav-badge-mob" class="absolute -top-1 -right-1 bg-rose-400 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-2xl bg-lavender-100 text-lavender-800 focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-b border-lavender-100 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#spots" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-2">精選景點</a>
+            <a href="#planner" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-2">夢幻行程</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-42 md:pb-32 hero-gradient text-white overflow-hidden shadow-xl">
+        <div class="absolute inset-0 bg-lavender-950/30 backdrop-blur-[2px]"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                台中推薦景點
+            </h1>
+            <a href="#spots" class="inline-flex items-center space-x-2 px-8 py-4 bg-white text-lavender-800 font-bold rounded-2xl shadow-xl hover:bg-lavender-50 transition transform hover:-translate-y-0.5">
+                <span>展開探索</span>
+                <i class="fa-solid fa-arrow-down animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="spots" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div class="text-center mb-12">
+            <span class="text-lavender-600 font-bold uppercase tracking-widest text-xs mb-2 block">Lavender Selections</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-3">4大精選休閒景點</h2>
+            <p class="text-slate-500 max-w-lg mx-auto">點擊下方分類快速篩選，或點擊卡片深入了解放大版的詳細資訊與交通指引。</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+            <button onclick="filterCategory('全部')" id="btn-all" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-600 text-white shadow-md shadow-lavender-400/30">全部景點</button>
+            <button onclick="filterCategory('自然生態')" id="btn-nature" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">自然生態</button>
+            <button onclick="filterCategory('文青商圈')" id="btn-arts" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">文青商圈</button>
+            <button onclick="filterCategory('打卡名所')" id="btn-photo" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">打卡名所</button>
+            <button onclick="filterCategory('美食商圈')" id="btn-food" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">美食商圈</button>
+        </div>
+
+        <!-- Spots Grid - Enlarged Images & Text -->
+        <div id="spots-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Planner Section -->
+        <section id="planner" class="mt-28 bg-gradient-to-br from-lavender-900 via-slate-900 to-lavender-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-lavender-700/30">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-lavender-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-lavender-800/40">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full bg-lavender-500/25 border border-lavender-400/30 text-lavender-200 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                            💜 個人化夢幻行程
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-bold">我的收藏景點清單</h2>
+                    </div>
+                    <button onclick="openFavoritesModal()" class="px-5 py-2.5 bg-lavender-500 hover:bg-lavender-400 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-lavender-500/30 flex items-center space-x-2">
+                        <i class="fa-solid fa-heart text-rose-200"></i>
+                        <span>管理收藏 (<span id="planner-count">0</span>)</span>
+                    </button>
+                </div>
+                
+                <div id="planner-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="fixed inset-0 z-50 bg-lavender-950/60 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transform transition-all border border-lavender-100">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-lavender-950/60 hover:bg-lavender-950 text-white flex items-center justify-center transition shadow-md">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Content injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="fav-modal" class="fixed inset-0 z-50 bg-lavender-950/60 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl p-6 relative border border-lavender-100">
+            <div class="flex items-center justify-between mb-6 border-b border-lavender-100 pb-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-400 flex items-center justify-center">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">我的浪漫收藏</h3>
+                </div>
+                <button onclick="closeFavoritesModal()" class="text-slate-400 hover:text-slate-600 p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div id="fav-list-container" class="space-y-4">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-lavender-950 text-white border-t border-lavender-900 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-2xl bg-lavender-600 flex items-center justify-center text-white font-bold shadow-md">
+                    <i class="fa-solid fa-feather text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-tight">Taichung Lavender Guide</span>
+                    <p class="text-xs text-lavender-300">© 2026 Soft Lavender Romance Style.</p>
+                </div>
+            </div>
+            <div class="flex space-x-6 text-lavender-300">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook text-xl"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dataset of the 4 spots with enlarged text and specified images
+        const spots = [
+            {
+                id: 1,
+                name: "高美濕地",
+                category: "自然生態",
+                image: "https://www.taiwanviptravel.com/articles/images/gaomei-wetland-titleImage.jpg",
+                rating: 4.8,
+                reviewsCount: "12.4k",
+                summary: "擁有一望無際的木棧道與世界級絕美夕陽景致，孕育豐富鳥類與蟹類生態，是攝影愛好者的朝聖勝地。",
+                address: "台中市清水區大甲溪出海口",
+                transport: "搭乘火車至清水車站，轉搭巨業客運178、179號公車至高美濕地站。",
+                hours: "全天開放（建議日落前1小時前往最佳）",
+                duration: "建議停留 2 - 3 小時",
+                description: "高美濕地（高美野生動物保護區）結合了泥質與沙灘，並有茂密的紅樹林，孕育了豐富的鳥類、蟹類生態。旅客可漫步於專屬木棧道上欣賞夕陽斜照在水面上的波光粼粼，感受大自然的壯麗與寧靜。"
+            },
+            {
+                id: 2,
+                name: "勤美誠品綠園道",
+                category: "文青商圈",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMMLittZmeyjhn8TyNwjsdN7Bzx_uA-K28yvrKT8nGBNJj7GIuaF9YSNWV&s=10",
+                rating: 4.7,
+                reviewsCount: "15.2k",
+                summary: "勤美誠品綠園道是臺中西區的綠建築地標，由廢棄大樓改建而成，最大特色為融入10萬株植栽的內外垂直植生牆。",
+                address: "台中市西區公益路68號",
+                transport: "搭乘市區公車 27、81、107 至「草悟道(市民廣場)」站下車步行即達。",
+                hours: "每日 11:00 - 22:00",
+                duration: "建議停留 2 - 4 小時",
+                description: "勤美誠品綠園道是臺中西區的綠建築地標，由廢棄大樓改建而成，最大特色為融入10萬株植栽的內外垂直植生牆。商場結合購物與自然，3樓設有中區最大的誠品書店，並引進眾多美食餐廳。其地理位置極佳，連通市民廣場、PARK2草悟廣場與科博館，是臺中融合文藝與休閒的核心商圈。"
+            },
+            {
+                id: 3,
+                name: "宮原眼科",
+                category: "打卡名所",
+                image: "https://gofunit.com/wp-content/uploads/2021/04/@shunsuke_twjp-1-850x638.jpg",
+                rating: 4.6,
+                reviewsCount: "28.9k",
+                summary: "日治眼科醫院華麗轉身，保留紅磚拱型騎樓外觀，內部則打造為極具氣勢的哈利波特魔法圖書館風格冰品名所。",
+                address: "台中市中區中山路20號",
+                transport: "位於台中火車站前站步行約5分鐘，交通極為便利。",
+                hours: "每日 10:00 - 21:00",
+                duration: "建議停留 1 - 2 小時",
+                description: "宮原眼科保留了紅磚牆與拱型騎樓的歷史建築外觀，內部則打造為極具氣勢的魔幻圖書館風格。招牌冰淇淋搭配豐富的鳳梨酥、乳酪蛋糕配料，以及精緻的伴手禮盒，是每位旅客必訪的打卡熱點。"
+            },
+            {
+                id: 4,
+                name: "逢甲夜市",
+                category: "美食商圈",
+                image: "https://photo.settour.com.tw/900x600/https://www.settour.com.tw/ss_img/info/location/TXG/G0/TXG0000083/TXG0000083_82085.jpg",
+                rating: 4.5,
+                reviewsCount: "34.1k",
+                summary: "全台知名最大夜市，匯聚各式創意小吃與潮流服飾購物商圈，體驗熱鬧豐富的台中夜生活。",
+                address: "台中市西屯區文華路",
+                transport: "搭乘市區公車 5、25、33、35、37 等至逢甲大學站下車。",
+                hours: "每日 16:00 - 01:00",
+                duration: "建議停留 3 - 4 小時",
+                description: "逢甲夜市是台灣無數創意小吃的發源地，如明倫蛋餅、官芝霖大腸包小腸等。周邊結合逢甲商圈的潮流服飾與平價百貨，是體驗台中熱鬧夜生活、品嚐道地美食的絕對首選。"
+            }
+        ];
+
+        let favorites = JSON.parse(localStorage.getItem('taichung_lavender_favs')) || [1, 2];
+        let currentFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSpots('全部');
+            updateFavBadges();
+            renderPlanner();
+        });
+
+        // Filter Category
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            ['all', 'nature', 'arts', 'photo', 'food'].forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (el) {
+                    el.className = "px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800";
+                }
+            });
+
+            const activeId = category === '全部' ? 'btn-all' : 
+                             category === '自然生態' ? 'btn-nature' : 
+                             category === '文青商圈' ? 'btn-arts' : 
+                             category === '打卡名所' ? 'btn-photo' : 'btn-food';
+            
+            const activeEl = document.getElementById(activeId);
+            if (activeEl) {
+                activeEl.className = "px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-600 text-white shadow-md shadow-lavender-400/30";
+            }
+
+            renderSpots(category);
+        }
+
+        // Render Spots Grid - With Enlarged Images & Text
+        function renderSpots(filter) {
+            const grid = document.getElementById('spots-grid');
+            grid.innerHTML = '';
+
+            const filteredSpots = filter === '全部' ? spots : spots.filter(s => s.category === filter);
+
+            filteredSpots.forEach(spot => {
+                const isFav = favorites.includes(spot.id);
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-lavender-100 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div class="relative overflow-hidden h-72 sm:h-80 bg-lavender-50">
+                        <img src="${spot.image}" alt="${spot.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/800x600/f5edff/7e37b5?text=Taichung+Spot'">
+                        <span class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/90 backdrop-blur-md text-lavender-900 shadow-sm">
+                            ${spot.category}
+                        </span>
+                        <button onclick="toggleFavorite(event, ${spot.id})" class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-rose-400 shadow-md hover:scale-110 transition">
+                            <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-2xl font-bold text-slate-800 group-hover:text-lavender-700 transition">${spot.name}</h3>
+                            <div class="flex items-center space-x-1 text-amber-500 text-sm font-bold bg-amber-50 px-3 py-1 rounded-lg">
+                                <i class="fa-solid fa-star"></i>
+                                <span>${spot.rating} (${spot.reviewsCount})</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-base leading-relaxed mb-8 line-clamp-3">${spot.summary}</p>
+                        <div class="mt-auto flex items-center justify-between pt-5 border-t border-lavender-100">
+                            <span class="text-sm text-slate-500 flex items-center space-x-1.5 font-medium">
+                                <i class="fa-solid fa-clock text-lavender-600"></i>
+                                <span>${spot.duration}</span>
+                            </span>
+                            <button onclick="openModal(${spot.id})" class="px-5 py-2.5 bg-lavender-50 hover:bg-lavender-600 text-lavender-700 hover:text-white rounded-xl text-sm font-bold transition shadow-sm">
+                                查看詳細資訊
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Modal Details - Enlarged Image & Text
+        function openModal(id) {
+            const spot = spots.find(s => s.id === id);
+            if (!spot) return;
+            const isFav = favorites.includes(spot.id);
+
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <div class="relative h-72 sm:h-96 bg-lavender-50">
+                    <img src="${spot.image}" alt="${spot.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/f5edff/7e37b5?text=Taichung+Spot'">
+                    <span class="absolute top-4 left-4 px-4 py-2 rounded-full text-sm font-bold bg-white/90 backdrop-blur-md text-lavender-900 shadow-md">
+                        ${spot.category}
+                    </span>
+                </div>
+                <div class="p-8 sm:p-10">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2">${spot.name}</h2>
+                            <div class="flex items-center space-x-2 text-sm text-amber-500 font-bold">
+                                <i class="fa-solid fa-star"></i>
+                                <span>${spot.rating} 評分</span>
+                                <span class="text-slate-300">•</span>
+                                <span class="text-slate-500 font-normal">${spot.reviewsCount} 則評論</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleFavorite(event, ${spot.id}); openModal(${spot.id});" class="flex items-center space-x-2 px-5 py-3 rounded-2xl bg-rose-50 text-rose-500 font-bold text-sm hover:bg-rose-100 transition shadow-sm">
+                            <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-lg"></i>
+                            <span>${isFav ? '已加入收藏' : '加入收藏'}</span>
+                        </button>
+                    </div>
+                    <p class="text-slate-700 text-lg leading-loose mb-8 font-normal">${spot.description}</p>
+                    
+                    <div class="space-y-4 bg-lavender-50/60 p-6 rounded-3xl border border-lavender-100 text-base">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-lavender-600 mt-1 text-lg"></i>
+                            <div>
+                                <span class="font-bold text-slate-800 block mb-0.5">地址</span>
+                                <span class="text-slate-600">${spot.address}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-bus text-lavender-600 mt-1 text-lg"></i>
+                            <div>
+                                <span class="font-bold text-slate-800 block mb-0.5">交通方式</span>
+                                <span class="text-slate-600">${spot.transport}</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-lavender-200/60">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-clock text-lavender-600 mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-bold text-slate-800 block mb-0.5">營業時間</span>
+                                    <span class="text-slate-600">${spot.hours}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-hourglass-half text-lavender-600 mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-bold text-slate-800 block mb-0.5">建議停留</span>
+                                    <span class="text-slate-600">${spot.duration}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Favorites
+        function toggleFavorite(e, id) {
+            e.stopPropagation();
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(id);
+            }
+            localStorage.setItem('taichung_lavender_favs', JSON.stringify(favorites));
+            updateFavBadges();
+            renderSpots(currentFilter);
+            renderPlanner();
+        }
+
+        function updateFavBadges() {
+            const count = favorites.length;
+            document.getElementById('fav-badge').innerText = count;
+            document.getElementById('fav-badge-mob').innerText = count;
+            document.getElementById('planner-count').innerText = count;
+        }
+
+        function renderPlanner() {
+            const container = document.getElementById('planner-container');
+            container.innerHTML = '';
+
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-2 text-center py-10 text-lavender-200/60">
+                        <i class="fa-regular fa-heart text-3xl mb-2"></i>
+                        <p class="text-sm">尚未收藏任何景點，快點擊景點卡片的愛心吧！</p>
+                    </div>
+                `;
+                return;
+            }
+
+            favorites.forEach((id, index) => {
+                const spot = spots.find(s => s.id === id);
+                if (!spot) return;
+                const card = document.createElement('div');
+                card.className = "flex items-center justify-between p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-lavender-500/30 text-white shadow-lg";
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3 cursor-pointer" onclick="openModal(${spot.id})">
+                        <span class="w-8 h-8 rounded-xl bg-lavender-600 text-white font-bold text-sm flex items-center justify-center shrink-0">0${index + 1}</span>
+                        <img src="${spot.image}" alt="${spot.name}" class="w-14 h-14 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/100x100/f5edff/7e37b5?text=Img'">
+                        <div>
+                            <h4 class="font-bold text-base sm:text-lg">${spot.name}</h4>
+                            <span class="text-xs text-lavender-300">${spot.duration}</span>
+                        </div>
+                    </div>
+                    <button onclick="toggleFavorite(event, ${spot.id})" class="text-rose-300 hover:text-rose-200 p-2 transition">
+                        <i class="fa-solid fa-trash-can text-lg"></i>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openFavoritesModal() {
+            const container = document.getElementById('fav-list-container');
+            container.innerHTML = '';
+
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 text-slate-400">
+                        <i class="fa-regular fa-heart text-4xl mb-3"></i>
+                        <p class="font-medium">目前沒有收藏任何景點</p>
+                    </div>
+                `;
+            } else {
+                favorites.forEach(id => {
+                    const spot = spots.find(s => s.id === id);
+                    if (!spot) return;
+                    const item = document.createElement('div');
+                    item.className = "flex items-center justify-between p-3.5 rounded-2xl bg-lavender-50/50 border border-lavender-100 hover:bg-lavender-100/60 transition";
+                    item.innerHTML = `
+                        <div class="flex items-center space-x-3.5 cursor-pointer" onclick="closeFavoritesModal(); openModal(${spot.id});">
+                            <img src="${spot.image}" alt="${spot.name}" class="w-16 h-16 rounded-xl object-cover" onerror="this.src='https://placehold.co/100x100/f5edff/7e37b5?text=Img'">
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-base">${spot.name}</h4>
+                                <span class="text-xs text-lavender-600 font-semibold">${spot.category}</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleFavorite(event, ${spot.id}); openFavoritesModal();" class="text-slate-400 hover:text-rose-500 p-2 transition">
+                            <i class="fa-solid fa-trash-can text-lg"></i>
+                        </button>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
+            const favModal = document.getElementById('fav-modal');
+            favModal.classList.remove('hidden');
+            favModal.classList.add('flex');
+        }
+
+        function closeFavoritesModal() {
+            const favModal = document.getElementById('fav-modal');
+            favModal.classList.add('hidden');
+            favModal.classList.remove('flex');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        }
+    </script>
+</body>
+</html>
