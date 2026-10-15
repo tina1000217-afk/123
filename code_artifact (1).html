@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台中推薦景點 - Soft Lavender Romance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        lavender: {
+                            50: '#fcf8ff',
+                            100: '#f5edff',
+                            200: '#ecdffd',
+                            300: '#ddc5f9',
+                            400: '#c59ff2',
+                            500: '#ab72e8',
+                            600: '#944cd4',
+                            700: '#7e37b5',
+                            800: '#682e94',
+                            900: '#562779',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .glass-nav {
+            background: rgba(252, 248, 255, 0.85);
+            backdrop-filter: blur(16px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(148, 76, 212, 0.75) 0%, rgba(104, 46, 148, 0.85) 100%), url('https://www.taiwanviptravel.com/articles/images/gaomei-wetland-titleImage.jpg') center/cover;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-lavender-50 via-white to-lavender-100/40 text-slate-700 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-lavender-200/60 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-lavender-500 to-lavender-300 flex items-center justify-center text-white shadow-md shadow-lavender-400/30">
+                    <i class="fa-solid fa-feather text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-lavender-800 to-lavender-600 bg-clip-text text-transparent">台中推薦景點</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#spots" class="text-slate-600 hover:text-lavender-700 font-medium transition">精選景點</a>
+                <a href="#planner" class="text-slate-600 hover:text-lavender-700 font-medium transition">夢幻行程</a>
+                <button onclick="openFavoritesModal()" class="relative flex items-center space-x-2 px-4 py-2 rounded-2xl bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800 transition font-medium shadow-sm">
+                    <i class="fa-solid fa-heart text-rose-400"></i>
+                    <span>地圖</span>
+                    <span id="fav-badge" class="absolute -top-1 -right-1 bg-rose-400 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+                </button>
+            </nav>
+
+            <div class="md:hidden flex items-center space-x-3">
+                <button onclick="openFavoritesModal()" class="relative p-2.5 rounded-2xl bg-lavender-100 text-lavender-800">
+                    <i class="fa-solid fa-heart text-rose-400 text-lg"></i>
+                    <span id="fav-badge-mob" class="absolute -top-1 -right-1 bg-rose-400 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="p-2.5 rounded-2xl bg-lavender-100 text-lavender-800 focus:outline-none">
+                    <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 border-b border-lavender-100 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#spots" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-2">精選景點</a>
+            <a href="#planner" onclick="toggleMobileMenu()" class="block text-slate-700 font-medium py-2">夢幻行程</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-24 md:pt-42 md:pb-32 hero-gradient text-white overflow-hidden shadow-xl">
+        <div class="absolute inset-0 bg-lavender-950/30 backdrop-blur-[2px]"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                台中推薦景點
+            </h1>
+            <a href="#spots" class="inline-flex items-center space-x-2 px-8 py-4 bg-white text-lavender-800 font-bold rounded-2xl shadow-xl hover:bg-lavender-50 transition transform hover:-translate-y-0.5">
+                <span>展開探索</span>
+                <i class="fa-solid fa-arrow-down animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="spots" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div class="text-center mb-12">
+            <span class="text-lavender-600 font-bold uppercase tracking-widest text-xs mb-2 block">Lavender Selections</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-3">4大精選休閒景點</h2>
+            <p class="text-slate-500 max-w-lg mx-auto">點擊卡片地圖標點可快速查看地圖定位與交通導航。</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+            <button onclick="filterCategory('全部')" id="btn-all" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-600 text-white shadow-md shadow-lavender-400/30">全部景點</button>
+            <button onclick="filterCategory('自然生態')" id="btn-nature" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">自然生態</button>
+            <button onclick="filterCategory('文青商圈')" id="btn-arts" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">文青商圈</button>
+            <button onclick="filterCategory('打卡名所')" id="btn-photo" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">打卡名所</button>
+            <button onclick="filterCategory('美食商圈')" id="btn-food" class="px-5 py-2.5 rounded-full text-sm font-semibold transition bg-lavender-100/80 hover:bg-lavender-200 text-lavender-800">美食商圈</button>
+        </div>
+
+        <!-- Spots Grid - Enlarged Images & Text & Map Pins -->
+        <div id="spots-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Planner Section -->
+        <section id="planner" class="mt-28 bg-gradient-to-br from-lavender-900 via-slate-900 to-lavender-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden border border-lavender-700/30">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-lavender-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-lavender-800/40">
+                    <div>
+                        <span class="px-3.5 py-1.5 rounded-full bg-lavender-500/25 border border-lavender-400/30 text-lavender-200 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                            💜 個人化夢幻行程
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-bold">我的收藏景點清單</h2>
+                    </div>
+                    <button onclick="openFavoritesModal()" class="px-5 py-2.5 bg-lavender-500 hover:bg-lavender-400 text-white font-semibold rounded-xl text-sm transition shadow-lg shadow-lavender-500/30 flex items-center space-x-2">
+                        <i class="fa-solid fa-heart text-rose-200"></i>
+                        <span>管理收藏 (<span id="planner-count">0</span>)</span>
+                    </button>
+                </div>
+                
+                <div id="planner-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="fixed inset-0 z-50 bg-lavender-950/60 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transform transition-all border border-lavender-100">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-lavender-950/60 hover:bg-lavender-950 text-white flex items-center justify-center transition shadow-md">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Content injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="fav-modal" class="fixed inset-0 z-50 bg-lavender-950/60 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-2xl p-6 relative border border-lavender-100">
+            <div class="flex items-center justify-between mb-6 border-b border-lavender-100 pb-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-xl bg-rose-100 text-rose-400 flex items-center justify-center">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl font
